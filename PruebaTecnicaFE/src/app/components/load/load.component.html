@@ -1,0 +1,17 @@
+<div class="file-container" *ngIf="!selectedFile">
+    <input class="file" type="file" (change)="onFileChanged($event)">
+</div>
+
+<div class="file-input-container" style="width: 100%;">
+    <div class="inputFile" *ngIf="selectedFile">
+        Nombre archivo seleccionado: {{selectedFile.name}} <br>
+        <button (click)="selectedFile = undefined" class="btn btn-primary"> Escoger otro Archivo </button>
+    </div>
+    <div class="botonEnviar">
+        <div *ngIf="selectedFile; else elseBlock">
+            <button id="sendFile" class="btn btn-primary" (click)="load()"> Enviar Archivo </button>
+        </div>
+        <ng-template #elseBlock><button id="sendFile" class="btn btn-primary" disabled> Enviar Archivo </button>
+        </ng-template>
+    </div>
+</div>
